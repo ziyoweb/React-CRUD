@@ -20,6 +20,9 @@ body {
   border: 1px solid #eee;
   border-radius: 15px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card img {
