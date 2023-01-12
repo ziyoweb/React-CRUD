@@ -1,16 +1,37 @@
 import React from "react";
+import { students } from "./mock";
 
 class Student extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: students,
+    };
+  }
   render() {
-    const { children, title } = this.props;
+    const onFilter = (e) => {
+      console.log(e.target.value);
+      let res = students.filter((value) =>
+        value.name.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      this.setState({ data: res });
+    };
+
+    const onDelete = (id) => {
+      let res = this.state.data.filter((value) => value.id !== id);
+      this.setState({ data: res });
+    };
     return (
       <div>
-        <h1>Hi Student {title}</h1>
-        {children}
-        {/* <h4>React is {this.props?.status || "unknown"}</h4>
-        <h3>
-          {this.props?.data?.status} {this.props?.data?.title}
-        </h3> */}
+        <input type="text" onChange={onFilter} placeholder="Search..." />
+        {this.state.data.map(({ id, name, status }) => {
+          return (
+            <h1 key={id}>
+              {id} {name} {status}{" "}
+              <button onClick={() => onDelete(id)}>delete</button>
+            </h1>
+          );
+        })}
       </div>
     );
   }

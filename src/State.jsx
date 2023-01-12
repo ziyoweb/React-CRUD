@@ -5,7 +5,8 @@ export default class State extends Component {
     super(props);
     this.state = {
       count: 1,
-      title: "Muhriddin",
+      name: "Muhriddin",
+      surname: "Ziyodulloyev",
     };
   }
 
@@ -20,20 +21,40 @@ export default class State extends Component {
         this.setState({ count: this.state.count - 1 });
       }
     };
-    const typing = (e) => {
-      this.setState({ title: e.target.value });
-    };
+    // const typing = (e) => {
+    //   this.setState({ title: e.target.value });
+    // };
     const onSelect = (e) => {
       console.log(e.target.value);
     };
     const onCheck = (e) => {
       console.log(e.target.checked);
     };
+
+    const onChange = (e) => {
+      this.setState({ [e.target.name]: e.target.value });
+    };
+
+    // const onNameChange = (e) => {
+    //   this.setState({ name: e.target.value });
+    // };
+
+    // const onSurnameChange = (e) => {
+    //   this.setState({ surname: e?.target?.value });
+    // };
+
     return (
       <div>
-        <p>{this.state.title}</p>
-        <input type="text" onChange={typing} placeholder="Write down" />
+        <h1>Name: {this.state.name}</h1>
+        <h1>Surname: {this.state.surname}</h1>
         <h1>State: {this.state.count}</h1>
+        <input type="text" onChange={onChange} name="name" placeholder="Name" />
+        <input
+          type="text"
+          onChange={onChange}
+          name="surname"
+          placeholder="Surname"
+        />
         <button onClick={plus}>+</button>
         <button onClick={minus}>-</button>
 

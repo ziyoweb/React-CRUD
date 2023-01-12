@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 .wrapper {
@@ -35,4 +36,26 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+}
+
+.box__wrap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 21%;
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.box {
+  width: 150px;
+  height: 200px;
+}
+
+.box:nth-child(odd) {
+  background-color: blue;
+}
+
+.box:nth-child(even) {
+  background-color: green;
 }
