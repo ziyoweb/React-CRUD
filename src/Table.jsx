@@ -28,9 +28,9 @@ class Table extends React.Component {
         this.state.address.length > 0
       ) {
         let res = [
-          ...data,
+          ...this.state.data,
           {
-            id: Date.now(),
+            id: this.state.data.length + 1,
             name: this.state.name,
             age: this.state.age,
             address: this.state.address,
